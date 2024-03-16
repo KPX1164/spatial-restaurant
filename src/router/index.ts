@@ -10,7 +10,10 @@ import PofileView from '@/views/PofileView.vue'
 import SignInView from '@/views/SignInView.vue'
 import SingUpView from '@/views/signup/SingUpView.vue'
 import SignUpLayoutView from '@/views/signup/SignUpLayoutView.vue'
-import PersonaliseView from '@/views/signup/PersonaliseView.vue'
+import UserDetail from '@/views/user/UserDetail.vue'
+import UserLayout from '@/views/user/UserLayout.vue'
+import UserPersonalise from '@/views/user/UserPersonalise.vue'
+import UserFavourite from '@/views/user/UserFavourite.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -34,14 +37,9 @@ const router = createRouter({
       name: 'support-view',
       component: SupportView
     },
-    {
-      path: '/profile',
-      name: 'supprofileport-view',
-      component: PofileView
-    },
 
     {
-      path: '/signup',
+      path: '/sign-up',
       name: 'signup-layout',
       component: SignUpLayoutView,
       children: [
@@ -49,16 +47,32 @@ const router = createRouter({
           path: '',
           name: 'signup-view',
           component: SingUpView
-        },
-        {
-          path: 'personalise',
-          name: 'personalise-view',
-          component: PersonaliseView
         }
       ]
     },
     {
-      path: '/signin',
+      path: '/profile',
+      name: 'setting-layout',
+      component: UserLayout,
+      children: [
+        {
+          path: '',
+          name: 'user-detail',
+          component: UserDetail
+        },
+        {
+          path: 'personalise',
+          name: 'user-personalise',
+          component: UserPersonalise
+        },{
+          path: 'favourite',
+          name: 'user-favourite',
+          component: UserFavourite
+        }
+      ]
+    },
+    {
+      path: '/sign-in',
       name: 'signin-view',
       component: SignInView
     },

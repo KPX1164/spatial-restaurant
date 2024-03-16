@@ -1,4 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { reactive } from 'vue'
+import { useRouter } from 'vue-router'
+import { signIn } from '@/services/AuthService' // Import the signIn function
+
+const data = reactive({
+  email: '',
+  password: ''
+})
+
+const router = useRouter()
+
+const submit = async () => {
+  try {
+    await signIn(data) 
+
+    await router.push('/')
+  } catch (error) {
+    console.error('Sign-in error:', error)
+  }
+}
+</script>
+
 <template>
   <div class="System-default">
     <div class="Window">
@@ -16,24 +38,24 @@
           </div>
           <div class="VStack items-center">
             <div class="w-4/5">
-              <div class="VStack gap-2 xl:gap-10">
+              <form @submit.prevent="submit" class="VStack gap-2 xl:gap-10">
                 <div class="VStack w-full gap-4">
                   <p>Email</p>
-                  <input class="Input" type="text" />
+                  <input v-model="data.email" class="Input" type="text" />
                 </div>
                 <div class="VStack w-full gap-4">
                   <p>Passsword</p>
-                  <input class="Input tracking-widest" type="password" />
+                  <input v-model="data.password" class="Input tracking-widest" type="password" />
                 </div>
                 <div class="VStack w-full gap-4 text-center">
                   <Button class="Button full">Sign in</Button>
                   <div class="Section-break"></div>
                   <p>
                     Don't have an account yet?
-                    <RouterLink to="/signup" class="underline"> create account now!</RouterLink>
+                    <RouterLink to="/sign-up" class="underline"> create account now!</RouterLink>
                   </p>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
