@@ -60,11 +60,10 @@
                   <p>{{ user.firstname }}</p>
                   <!-- Display user's firstname -->
                 </router-link>
-                <span class="h-full w-1 border-l border-white opacity-70"></span>
                 <router-link
                   to="/sign-in"
                   @click="signOut"
-                  :class="{ 'HStack gap-2': true, active: activeItem === 'Sign-in' }"
+                  :class="{ 'border-l ml-3 pl-3 border-white HStack gap-2': true, active: activeItem === 'Sign-in' }"
                 >
                   Sign out
                 </router-link>
@@ -78,7 +77,7 @@
 
       <footer class="w-full text-center items-center VStack justify-center absolute bottom-0">
         <!-- Footer content -->
-        <div v-if="isLoggedIn" class="font-normal Docker text-white">
+        <div v-if="isLoggedIn" class="font-normal Docker text-white cursor-pointer">
           <router-link
             to="/"
             @click="toggleActive('Home')"
@@ -150,6 +149,9 @@ function toggleActive(item: string) {
 </script>
 
 <style scoped>
+.Button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
 .bg-container {
   position: fixed;
   top: 0;

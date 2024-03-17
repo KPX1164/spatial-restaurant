@@ -14,6 +14,8 @@ import UserDetail from '@/views/user/UserDetail.vue'
 import UserLayout from '@/views/user/UserLayout.vue'
 import UserPersonalise from '@/views/user/UserPersonalise.vue'
 import UserFavourite from '@/views/user/UserFavourite.vue'
+import MenuDetail from '@/views/MenuDetailView.vue'
+import UserGeneral from '@/views/user/UserGeneral.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -61,6 +63,11 @@ const router = createRouter({
           component: UserDetail
         },
         {
+          path: 'general',
+          name: 'user-general',
+          component: UserGeneral
+        },
+        {
           path: 'personalise',
           name: 'user-personalise',
           component: UserPersonalise
@@ -76,6 +83,13 @@ const router = createRouter({
       name: 'signin-view',
       component: SignInView
     },
+    {
+      path: '/menu/:menuId',
+      name: 'MenuDetailView',
+      component: MenuDetail,
+      props: true // Allows passing route params as props to the component
+    },
+    
     {
       path: '/404/:resource',
       name: '404-resource',

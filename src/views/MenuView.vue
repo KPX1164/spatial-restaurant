@@ -1,37 +1,6 @@
-<script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
-import RatingStar from '@/components/RatingStar.vue'
-
-
-const isScrolled = ref(false)
-
-const handleScroll = () => {
-  const windowElement = document.getElementById('Window')
-  if (windowElement) {
-    isScrolled.value = windowElement.scrollTop > 0
-  }
-}
-
-onMounted(() => {
-  console.log('Component mounted')
-  const windowElement = document.getElementById('Window')
-  if (windowElement) {
-    windowElement.addEventListener('scroll', handleScroll)
-  }
-})
-
-onUnmounted(() => {
-  console.log('Component unmounted')
-  const windowElement = document.getElementById('Window')
-  if (windowElement) {
-    windowElement.removeEventListener('scroll', handleScroll)
-  }
-})
-</script>
-
 <template>
   <div class="System-default">
-    <div id="Window" class="Window">
+    <div id="Window" class="Window" @scroll="handleScroll">
       <div
         id="Secondary-Navigator"
         class="Secondary-Navigator HStack items-center justify-between rounded-xl"
@@ -40,329 +9,98 @@ onUnmounted(() => {
         <div class="HStack mt-10">
           <p class="Title">Menu</p>
         </div>
-       
 
         <div class="HStack mt-5 items-center justify-center">
           <div id="sb-search" class="sb-search">
-						<form>
-							<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-							<input class="sb-search-submit" type="submit" value="">
-							<span class="sb-icon-search"></span>
-						</form>
-					</div>
-          
+            <form>
+              <input
+                class="sb-search-input"
+                placeholder="Enter your search term..."
+                type="search"
+                name="search"
+                id="search"
+              />
+              <input class="sb-search-submit" type="submit" value="" />
+              <span class="sb-icon-search"></span>
+            </form>
+          </div>
         </div>
       </div>
 
-      <div class="product-container">
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="4" />
-            </div>
-          </div>
-        </div>
-        <div class="VStack Window ignore min-w-max cursor-pointer">
-          <div class="HStack">
-            <div class="VStack">
-              <img
-                class="w-56 h-36 object-cover rounded-3xl"
-                src="https://img.sndimg.com/food/image/upload/w_555,h_416,c_fit,fl_progressive,q_95/v1/img/recipes/49/tHou0UsyTiAsfQo29Fpi_Lombardi%20Chicken%202.jpg"
-                alt=""
-              />
-            </div>
-            <div class="VStack pl-4 gap-2">
-              <p class="font-medium text-lg">Chicken Breasts Lombardi</p>
-              <div class="HStack justify-center font-normal text-sm gap-2">
-                <p class="Docker ignore">Fried food</p>
-                <p class="Docker ignore">Appetiser food</p>
-              </div>
-              <RatingStar :rating="2" />
-            </div>
-          </div>
-        </div>
+      <div class="product-container" ref="productContainer">
+        <MenuCard
+          v-for="(menu, index) in menus"
+          :key="index"
+          :imageSrc="menu.Images[0]"
+          :altText="menu.Name"
+          :title="menu.Name"
+          :tags="menu.Keywords"
+          :rating="menu.Rating"
+        />
+        <div v-if="isLoading" class="loading-indicator">Loading...</div>
       </div>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+import MenuCard from '@/components/MenuCard.vue'
+import axios from 'axios'
+
+const isScrolled = ref(false)
+const isLoading = ref(false)
+const menus = ref([])
+let page = 1
+
+const handleScroll = () => {
+  const productContainer = document.getElementById('Window')
+  const scrollY = productContainer.scrollTop
+  const containerHeight = productContainer.scrollHeight
+  const windowHeight = window.innerHeight
+
+  if (scrollY + windowHeight >= containerHeight && !isLoading.value) {
+    fetchData()
+  }
+
+  isScrolled.value = scrollY > 0
+}
+
+onMounted(() => {
+  fetchData() // Fetch data when component is mounted
+  const windowElement = document.getElementById('Window')
+  windowElement.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  const windowElement = document.getElementById('Window')
+  windowElement.removeEventListener('scroll', handleScroll)
+})
+
+async function fetchData() {
+  isLoading.value = true
+  try {
+    const response = await axios.get(`http://localhost:8080/spatial-food?page=${page}`)
+    const newData = response.data
+    
+    // Check if there is any new data
+    if (newData.length === 0) {
+      // No more data available, stop fetching
+      console.log('No more data available.')
+      return
+    }
+    
+    menus.value = [...menus.value, ...newData]
+    page++
+  } catch (error) {
+    console.error('Error fetching data:', error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+</script>
+
 <style scoped>
 .Secondary-Navigator {
   position: sticky;
@@ -392,5 +130,17 @@ onUnmounted(() => {
 
 #Window {
   overflow-y: scroll;
+  height: 100vh; /* Set the height to fill the viewport */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+#Window::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, Edge */
+}
+
+.loading-indicator {
+  margin-top: 10px;
+  text-align: center;
+  font-style: italic;
 }
 </style>

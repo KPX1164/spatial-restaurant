@@ -4,6 +4,14 @@
       <div id="Primary" class="p-7 w-1/4">
         <p class="Title">Profile</p>
         <div class="VStack gap-3">
+          <RouterLink
+            to="/profile"
+            @click="toggleActive('UserDetail')"
+            :class="{
+              'HStack gap-2 rounded-xl p-3 cursor-pointer item': true,
+              active: activeItem === 'UserDetail'
+            }"
+          >
           <div class="HStack gap-2">
             <div class="h-12 w-12">
               <svg
@@ -31,9 +39,10 @@
               </div>
             </div>
           </div>
+          </RouterLink>
           <div class="m-7"></div>
           <RouterLink
-            to="/profile"
+            to="/profile/general"
             @click="toggleActive('General')"
             :class="{
               'HStack gap-2 rounded-xl p-3 cursor-pointer item': true,
