@@ -94,7 +94,7 @@
             to="/findmy"
             @click="toggleActive('FindMy')"
             :class="{ 'p-2 pl-5 pr-5 Docker-item': true, active: activeItem === 'FindMy' }"
-            >FindMy</router-link
+            >My Spatial</router-link
           >
  
           <router-link

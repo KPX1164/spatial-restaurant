@@ -7,7 +7,9 @@ type Menu = {
   Images: string[]
   Name: string
   Keywords: string[]
-  Rating: number
+  AggregatedRating: number
+  RecipeIngredientParts: string[]
+  RecipeInstructions: string[]
 }
 
 const isScrolled = ref(false)
@@ -48,7 +50,8 @@ onUnmounted(() => {
 async function fetchData() {
   isLoading.value = true
   try {
-    const response = await axios.get(`http://localhost:8080/spatial-food?page=${page}`)
+    
+    const response = await axios.get(`http://localhost:9090/recipes?page=${page}`)
     const newData = response.data
 
     // Check if there is any new data
@@ -86,14 +89,16 @@ async function fetchData() {
       <div id="Window" class="Pseudo-Window w-full pl-10 pr-10" @scroll="handleScroll">
         <div class="product-container" ref="productContainer">
           <MenuCard
-            v-for="(menu, index) in menus"
-            :key="index"
-            :imageSrc="menu.Images[0]"
-            :altText="menu.Name"
-            :title="menu.Name"
-            :tags="menu.Keywords"
-            :rating="menu.Rating"
-          />
+          v-for="(menu, index) in menus"
+          :key="index"
+          :imageSrc="menu.Images[0]"
+          :altText="menu.Name"
+          :title="menu.Name"
+          :tags="menu.Keywords"
+          :rating="menu.AggregatedRating"
+          :ingredient="menu.RecipeIngredientParts"
+          :recipe="menu.RecipeInstructions"
+        />
           <div v-if="isLoading" class="loading-indicator">Loading...</div>
         </div>
         <div class="bg-black"></div>

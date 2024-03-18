@@ -17,6 +17,7 @@ import UserFavourite from '@/views/user/UserFavourite.vue'
 import MenuDetail from '@/views/MenuDetailView.vue'
 import UserGeneral from '@/views/user/UserGeneral.vue'
 import UserFindMyLayout from '@/views/user/UserFindMyLayout.vue'
+import UserFolder from '@/views/user/UserFolder.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -79,14 +80,13 @@ const router = createRouter({
       path: '/findmy',
       name: 'findmy-layout',
       component: UserFindMyLayout,
-      children: [
-        {
-          path: '',
-          name: 'user-favourite',
-          component: UserFavourite
-        },
+      children: [{
+        path: '/:folder',
+        name: 'folder',
+        component: UserFolder,
+        // props: true 
+      }]
        
-      ]
     },
     {
       path: '/sign-in',
