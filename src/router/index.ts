@@ -4,7 +4,7 @@ import NetworkView from '@/views/NetworkView.vue'
 import NProgress from 'nprogress'
 import HomeView from '@/views/HomeView.vue'
 import MenuView from '@/views/MenuView.vue'
-import FavouriteView from '@/views/FavouriteView.vue'
+import FavouriteView from '@/views/user/UserFavouriteView.vue'
 import SupportView from '@/views/SupportView.vue'
 import PofileView from '@/views/PofileView.vue'
 import SignInView from '@/views/SignInView.vue'
@@ -16,6 +16,7 @@ import UserPersonalise from '@/views/user/UserPersonalise.vue'
 import UserFavourite from '@/views/user/UserFavourite.vue'
 import MenuDetail from '@/views/MenuDetailView.vue'
 import UserGeneral from '@/views/user/UserGeneral.vue'
+import UserFindMyLayout from '@/views/user/UserFindMyLayout.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -71,11 +72,20 @@ const router = createRouter({
           path: 'personalise',
           name: 'user-personalise',
           component: UserPersonalise
-        },{
-          path: 'favourite',
+        }
+      ]
+    },
+    {
+      path: '/findmy',
+      name: 'findmy-layout',
+      component: UserFindMyLayout,
+      children: [
+        {
+          path: '',
           name: 'user-favourite',
           component: UserFavourite
-        }
+        },
+       
       ]
     },
     {

@@ -1,26 +1,26 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import { signUp } from '@/services/AuthService'; // Import the sign-up function
+import { signUp } from '@/services/AuthService' // Import the sign-up function
 
 const data = reactive({
   firstname: '',
   lastname: '',
   email: '',
   password: ''
-});
+})
 
-const router = useRouter();
+const router = useRouter()
 
 const submit = async () => {
   try {
-    await signUp(data); // Call the signUp function with the user data
-    await router.push('/sign-in');
+    await signUp(data) // Call the signUp function with the user data
+    await router.push('/sign-in')
   } catch (error) {
     // Handle error, if necessary
-    console.error('Sign-up error:', error);
+    console.error('Sign-up error:', error)
   }
-};
+}
 </script>
 
 <template>
@@ -45,7 +45,15 @@ const submit = async () => {
             <input v-model="data.lastname" class="Input" type="text" />
           </div>
         </div>
-        <button class="Button full" type="submit">Continue</button>
+        <div class="HStack gap-2 items-center">
+          <input
+            type="checkbox"
+            class="rounded-full bg-black appearance-none w-6 h-6 backdrop-blur backdrop-saturate-23 bg-opacity-50 checked:bg-white"
+          />
+          <p class="underline">Term and services</p>
+        </div>
+
+        <button class="Button full" type="submit">Sign up</button>
       </form>
       <div class="step">
         <!-- <multiselect

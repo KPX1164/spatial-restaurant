@@ -1,6 +1,6 @@
 <template>
   <div class="System-default">
-    <p class="Heading">personalise</p>
+    <p class="Heading">Personalise</p>
     </div>
 </template>
 

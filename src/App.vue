@@ -91,17 +91,12 @@
             >Menu</router-link
           >
           <router-link
-            to="/favourite"
-            @click="toggleActive('Favourite')"
-            :class="{ 'p-2 pl-5 pr-5 Docker-item': true, active: activeItem === 'Favourite' }"
-            >Favourite</router-link
+            to="/findmy"
+            @click="toggleActive('FindMy')"
+            :class="{ 'p-2 pl-5 pr-5 Docker-item': true, active: activeItem === 'FindMy' }"
+            >FindMy</router-link
           >
-          <router-link
-            to="/support"
-            @click="toggleActive('Support')"
-            :class="{ 'p-2 pl-5 pr-5 Docker-item': true, active: activeItem === 'Support' }"
-            >Support</router-link
-          >
+ 
           <router-link
             to="/profile"
             @click="toggleActive('Profile')"
