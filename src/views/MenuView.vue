@@ -80,19 +80,31 @@ let page = 1
 const query = ref('')
 const suggestions = ref<string[]>([]) // Define suggestions array
 
+// const handleScroll = () => {
+//   const productContainer = document.getElementById('Window')
+//   if (productContainer) {
+//     const scrollY = productContainer.scrollTop
+//     const containerHeight = productContainer.scrollHeight
+//     const windowHeight = window.innerHeight
+
+//     if (scrollY + windowHeight >= containerHeight && !isLoading.value) {
+//       fetchData()
+//     }
+//   }
+
+//   isScrolled.value = scrollY > 0
+// }
+
 const handleScroll = () => {
-  const productContainer = document.getElementById('Window')
+  const productContainer = document.getElementById('Window');
   if (productContainer) {
-    const scrollY = productContainer.scrollTop
-    const containerHeight = productContainer.scrollHeight
-    const windowHeight = window.innerHeight
-
-    if (scrollY + windowHeight >= containerHeight && !isLoading.value) {
-      fetchData()
-    }
+    const scrollY = productContainer.scrollTop;
+    // Log the scroll position to see if it's updating correctly
+    console.log("ScrollY:", scrollY);
+    isScrolled.value = scrollY > 0;
+    console.log("isScrolled:", isScrolled.value);
+    // Remaining logic...
   }
-
-  isScrolled.value = scrollY > 0
 }
 
 const fetchData = async () => {
@@ -172,8 +184,12 @@ onUnmounted(() => {
 .Secondary-Navigator.scrolled {
   backdrop-filter: blur(10px);
   border-radius: 10mm;
-  border: 1px solid rgba(209, 213, 219, 0.1);
+  padding-left: 30px;
+  padding-right: 30px;
+  border: 3px solid rgba(209, 213, 219, 0.1);
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2); /* Add drop shadow */
 }
+
 .Docker-Customised {
   width: 100%;
   height: fit-content;

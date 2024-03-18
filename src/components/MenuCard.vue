@@ -5,8 +5,16 @@
 
     <div class="text-white Window-customised p-5">
       <div class="VStack gap-10">
-        <img class="w-full max-h-72 object-cover rounded-lg" :src="imageSrc" :alt="altText" />
+        <img v-if="imageSrc && imageSrc.length > 0" class="w-full max-h-72 object-cover rounded-lg" :src="imageSrc[0]" :alt="altText" />
         <p class="Title text-center">{{ title }}</p>
+        <div class="Tags">
+          <div class="TagsContainer">
+            <div class=" HStack gap-2" style="justify-content: flex-center">
+              <!-- Set justify-content to flex-start -->
+              <p v-for="tag in tags" :key="tag" class="Docker ignore Tag">{{ tag }}</p>
+            </div>
+          </div>
+        </div>
         <div class="HStack gap-5">
           <p class="Heading">Rating:</p>
           <RatingStar :rating="rating" />
@@ -138,6 +146,18 @@ let user = getUser();  // Call getUser immediately when the script is set up
   backdrop-filter: blur(18px) saturate(180%);
   -webkit-backdrop-filter: blur(18px) saturate(180%);
   background: rgba(255, 255, 255, 0.3);
+  border-radius: 7mm;
+  border: 1px solid rgba(209, 213, 219, 0.1);
+  display: flex;
+  margin-bottom: 20px;
+}
+.Docker-Customised:hover {
+  width: 100%;
+  height: fit-content;
+  padding: 14px;
+  backdrop-filter: blur(11px) saturate(23%);
+  -webkit-backdrop-filter: blur(11px) saturate(23%);
+  background: rgba(20, 20, 20, 0.5);
   border-radius: 7mm;
   border: 1px solid rgba(209, 213, 219, 0.1);
   display: flex;

@@ -2,9 +2,24 @@
   <div class="System-default">
     <div class="Window HStack">
       <div id="Primary" class="p-7 w-1/4">
-        <p class="Title">My spatial</p>
+        <div class="HStack justify-between">
+          <p class="Title">My spatial</p>
+         
+        </div>
         <div class="VStack gap-3">
-          <p class="opacity-70">Folders</p>
+          <div class="HStack justify-between">
+            <p class="opacity-70">Folders</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 text-white opacity-70"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </div>
           <!-- Loop over the keys of findmy object -->
           <div v-for="folder in transformedFolders" :key="folder">
             <router-link
@@ -89,7 +104,7 @@ onMounted(async () => {
 // Compute transformed folder names
 const transformedFolders = computed(() => {
   if (findmy.value) {
-    return Object.keys(findmy.value).map(folder => {
+    return Object.keys(findmy.value).map((folder) => {
       return folder.replace(/_/g, ' ').charAt(0).toUpperCase() + folder.replace(/_/g, ' ').slice(1)
     })
   } else {
@@ -99,6 +114,12 @@ const transformedFolders = computed(() => {
 </script>
 
 <style scoped>
+.Docker {
+  background-color: transparent;
+  border: transparent;
+  padding: 5px;
+  border-radius: 0.4rem;
+}
 .Window {
   padding: 0px;
 }

@@ -4,7 +4,7 @@ import NetworkView from '@/views/NetworkView.vue'
 import NProgress from 'nprogress'
 import HomeView from '@/views/HomeView.vue'
 import MenuView from '@/views/MenuView.vue'
-import FavouriteView from '@/views/user/UserFavouriteView.vue'
+import UserFavourite from '@/views/user/UserFavouriteView.vue'
 import SupportView from '@/views/SupportView.vue'
 import PofileView from '@/views/PofileView.vue'
 import SignInView from '@/views/SignInView.vue'
@@ -13,7 +13,7 @@ import SignUpLayoutView from '@/views/signup/SignUpLayoutView.vue'
 import UserDetail from '@/views/user/UserDetail.vue'
 import UserLayout from '@/views/user/UserLayout.vue'
 import UserPersonalise from '@/views/user/UserPersonalise.vue'
-import UserFavourite from '@/views/user/UserFavourite.vue'
+// import UserFavourite from '@/views/user/UserFavourite.vue'
 import MenuDetail from '@/views/MenuDetailView.vue'
 import UserGeneral from '@/views/user/UserGeneral.vue'
 import UserFindMyLayout from '@/views/user/UserFindMyLayout.vue'
@@ -31,11 +31,7 @@ const router = createRouter({
       name: 'menu-view',
       component: MenuView
     },
-    {
-      path: '/favourite',
-      name: 'favourite-view',
-      component: FavouriteView
-    },
+   
     {
       path: '/support',
       name: 'support-view',
@@ -81,6 +77,11 @@ const router = createRouter({
       name: 'findmy-layout',
       component: UserFindMyLayout,
       children: [{
+        path: '',
+        name: 'favourite',
+        component: UserFavourite,
+        // props: true 
+      },{
         path: '/:folder',
         name: 'folder',
         component: UserFolder,
